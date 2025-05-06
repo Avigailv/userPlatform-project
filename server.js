@@ -1,32 +1,3 @@
-// import express from 'express';
-// import promisePool from './db/db.js';
-
-// const app = express();
-// const port = 3000;
-
-// app.get('/', async (req, res) => {
-//   try {
-//     const [rows] = await promisePool.query('SELECT * FROM your_table');
-//     res.json(rows);
-//   } catch (err) {
-//     console.error('Error executing query:', err);
-//     res.status(500).send('Error occurred');
-//   }
-// });
-
-// app.listen(port, () => {
-//   console.log(`Server running at http://localhost:${port}`);
-// });
-
-
-
-
-
-
-
-
-
-
 import express from 'express';
 import {
   getAllUsers,
@@ -38,14 +9,27 @@ import {
 
 import promisePool from './services/db.js';
 
+app.use(cors());//מה זה עושה???
 
 const app = express();
 app.use(express.json()); // מאפשר לקלוט body בפורמט JSON
 
-app.get('/users', async (req, res) => {
-  const users = await getAllUsers();
-  res.json(users);
+// app.get('/users', async (req, res) => {
+//   const users = await getAllUsers();
+//   res.json(users);
+// });
+
+
+app.get('/', async (req, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM your_table');
+    res.json(rows);
+  } catch (err) {
+    console.error('Error executing query:', err);
+    res.status(500).send('Error occurred');
+  }
 });
+
 
 app.get('/users/:id', async (req, res) => {
   const user = await getUserById(req.params.id);
