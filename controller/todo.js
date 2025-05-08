@@ -1,49 +1,52 @@
 
-import {deleteTodo} from "../services/todo.js";
-import query from "../services/query.js"; // או הנתיב הנכון לקובץ query.js
+import { deleteTodo, getAllTodos, addTodo, updateTodo } from "../services/todo.js";
 
 export class Todo {
-    // getAll = async (req, res) => {
-    //     try {
-    //         let users = await getAllUsers();
-    //         console.log('Successfully fetched all users');
-    //         res.send(users);
-    //     } catch (error) {
-    //         console.error('there was an error:', error.message);
-    //         res.status(500).send(error.message);
-    //     }
-    // };
 
-    // add = async (req, res) => {
-    //     try {
-    //         const newUser = req.body;
+    getAll = async (req, res) => {
+        try {
+            let todos = await getAllTodos();
+            console.log('Successfully fetched all todos');
+            res.send(todos);
+        } catch (error) {
+            console.error('there was an error:', error.message);
+            res.status(500).send(error.message);
+        }
+    };
 
-    //         // הכנסה לטבלת addresses
-    //         let addressResult = await query.insertQuery('addresses', {
-    //             street: newUser.address.street,
-    //             suite: newUser.address.suite,
-    //             city: newUser.address.city
-    //         });
+    add = async (req, res) => {
+        try {
+            const newTodo = req.body;
 
-    //         let user = await addUser( {
-    //             name: newUser.name,
-    //             username: newUser.username,
-    //             email: newUser.email,
-    //             phone: newUser.phone,
-    //             website: newUser.website,
-    //             address_id: addressResult.insertId
-    //         });
-    //         console.log(user)
-    //         //  add validate
+            // הכנסה לטבלת todos
+            let todoResult = await addTodo({
+                user_id: newTodo.user_id,
+                title: newTodo.title,
+                completed: newTodo.completed
+            });
+            console.log("todoResult", todoResult)
 
-    //         res.send({ id: user });
-    //     } catch (error) {
-    //         console.log('there was an error:', error.message);
-    //         res.status(500).send(error.message, "controllerUser");
-    //     }
-    // }
+            //  add validate
 
+            res.send({ id: todoResult });
+        } catch (error) {
+            console.log('there was an error:', error.message);
+            res.status(500).send(error.message, "controllerTodo");
+        }
+    }
 
+    update = async (req, res) => {
+        const id = req.params.id;
+        const updatedData = req.body;
+
+        try {
+            let result = await updateTodo(updatedData,id );
+            console.log("Successfully update item:", result);
+            res.status(200).json({ message: "Todo updated successfully" });
+        } catch (error) {
+            res.status(500).json({ error: "Failed to update todo" });
+        }
+    }
 
     delete = async (req, res) => {
         try {
@@ -56,5 +59,5 @@ export class Todo {
             res.status(500).send("Failed to delete user");
         }
     }
-    
+
 }

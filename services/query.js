@@ -47,6 +47,31 @@ const insertQuery = async (tableName, body) => {
     }
 };
 
+const updateQuery = async (tableName,body,conditions) => {
+    try {
+
+        if (!tableName || !body || Object.keys(body).length === 0 || !conditions) {
+            throw new Error("Invalid parameters for update query");
+        }
+
+        const setClause = Object.entries(body)
+        .map(([key, value]) => `${key}='${value}'`)
+        .join(', ');
+    
+        const query = `UPDATE ${tableName} SET ${setClause} WHERE ${conditions}`;
+        const result = await executeQuery(query);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Todo not found or not updated" });
+          }
+          
+          return result;
+
+    } catch (error) {console.log(error)
+        console.error(error);
+    }
+
+}
 
 const deleteQuery = async (tableName, conditions) => {
 try {
@@ -59,28 +84,7 @@ try {
     
 }
 
-// const updateQuery = async (tableName,body,conditions) => {
-//     try {
-
-//         if (!tableName || !body || Object.keys(body).length === 0 || !conditions) {
-//             throw new Error("Invalid parameters for update query");
-//         }
-
-//         const setClause = Object.entries(body)
-//         .map(([key, value]) => `${key}='${value}'`)
-//         .join(', ');
-    
-//         const query = `UPDATE ${tableName} SET ${setClause} WHERE ${conditions}`;
-//         const result = await executeQuery(query);
-//         return result;
-
-//     } catch (error) {console.log(error)
-//         console.error(error);
-//     }
-
-// }
 
 export default{
-    executeQuery, getQuery ,insertQuery ,deleteQuery
-    // , updateQuery
+    executeQuery, getQuery ,insertQuery ,deleteQuery, updateQuery
 }
