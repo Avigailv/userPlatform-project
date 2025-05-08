@@ -2,6 +2,8 @@ import query from './query.js';
 // const db = promisePool;
 console.log("users.services");
 let som;
+
+
 // פונקציה לשליפת כל המשתמשים
 export const getAllUsers = async () => {
   try {
@@ -15,19 +17,6 @@ export const getAllUsers = async () => {
 };
 
 
-// addUser: (userData, callback) => {
-//   const { title, completed ,user_id } = userData;
-
-//   DB.query(
-//       "INSERT INTO users (title, completed ,user_id) VALUES (?, ?, ?)",
-//       [title,completed,user_id],
-//       (err, result) => {
-//           if (err) return callback(err);
-//           const id = result.insertId;
-//       }
-//   );
-// }
-
 
 // פונקציה להוספת משתמש חדש
 export const addUser = async (newUser) => {
@@ -35,7 +24,7 @@ export const addUser = async (newUser) => {
   try {
     // let rows= await query.getQuery('users');
 
-    const [result] = await query.insertQuery(
+     let result = await query.insertQuery(
       "users",newUser
     );
     return result.insertId;
@@ -46,43 +35,36 @@ export const addUser = async (newUser) => {
 };
 
 // קריאה בצורה תקינה
-const run = async () => {
-  let som = await addUser({
-    name: "Avigail Cohen",
-    username: "avigail123",
-    email: "avigail.cohen@example.com",
-    phone: "052-1234567",
-    website: "avigail.io",
-    address: {
-      street: "Derech Hebron 10",
-      suite: "Apt. 5",
-      city: "Jerusalem"
-    }});
-  console.log("som", som);
-};
-
-run();
-
-// // פונקציה לעדכון משתמש לפי ID
-// export const updateUser = async (id, user) => {
-//   const { name, email } = user;
+// const run = async () => {
+//   let som;
 //   try {
-//     const [result] = await db.query(
-//       'UPDATE users SET name = ?, email = ? WHERE id = ?',
-//       [name, email, id]
-//     );
-//     return result.affectedRows > 0;
+//      som = await query.insertQuery('addresses', {
+//       street: "Derech Hebron 10",
+//       suite: "Apt. 5",
+//       city: "Jerusalem"
+//     });
+//     console.log("כתובת נוספה בהצלחה", som);
+//     try {
+//       let addressId;
+//       addressId = som.insertId;
+
+//     // הוספת משתמש עם address_id
+//     await addUser({
+//       name: "Avigail Cohen",
+//       username: "avigail123",
+//       email: "avigail.cohen@example.com",
+//       phone: "052-1234567",
+//       website: "avigail.io",
+//       address_id: addressId // שולחים את ה־address_id שנוצר
+//     });
+//     } catch (error) {
+//       console.log("משתמש ת בעית הוספה", som);
+//     }
 //   } catch (error) {
-//     throw new Error('שגיאה בעדכון נתונים');
+//     console.error("שגיאה בהכנסת כתובת:", error);
 //   }
-// };
-
-// // פונקציה למחיקת משתמש לפי ID
-// export const deleteUser = async (id) => {
-//   try {
-//     const [result] = await db.query('DELETE FROM users WHERE id = ?', [id]);
-//     return result.affectedRows > 0;
-//   } catch (error) {
-//     throw new Error('שגיאה במחיקת נתונים');
+//   finally{
+    
 //   }
 // }
+//  run();

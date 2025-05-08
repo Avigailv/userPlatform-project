@@ -2,10 +2,10 @@ import promisePool from "./db.js";
 const connectToDb = promisePool;
 import sql from 'mysql2';
 
-const executeQuery = async (query) => {
+const executeQuery = async (query,value) => {
     try {
-        const [rows] = await promisePool.query(query);
-        console.log('Query result:');
+        const [rows] = await promisePool.query(query,value);
+        console.log('Query result:',rows);
         return rows;
     } catch (error) {
         console.error('Query failed! Error:',error);
@@ -22,7 +22,6 @@ const getQuery = async (tableName) => {
     return result;
 }
 
-import executeQuery from './query.js';
 
 const insertQuery = async (tableName, body) => {
     try {
@@ -38,7 +37,9 @@ const insertQuery = async (tableName, body) => {
         );
 
         const query = `INSERT INTO ${tableName} (${columns}) VALUES (${placeholders})`;
-        const result = await executeQuery(query, values);
+        // const fullQuery = { query, values };
+        const result = await executeQuery( query,values );
+        console.log("insert, result:",result);
         return result;
     } catch (error) {
         console.error('Insert failed:', error.message);
@@ -83,5 +84,3 @@ export default{
     executeQuery, getQuery ,insertQuery
     // ,deleteQuery, updateQuery
 }
-
-// לדוגמה: הוספת משתמש חדש
