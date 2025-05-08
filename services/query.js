@@ -2,13 +2,13 @@ import promisePool from "./db.js";
 const connectToDb = promisePool;
 import sql from 'mysql2';
 
-const executeQuery = async (query,value) => {
+const executeQuery = async (query, value) => {
     try {
-        const [rows] = await promisePool.query(query,value);
-        console.log('Query result:',rows);
+        const [rows] = await promisePool.query(query, value);
+        console.log('Query result:', rows);
         return rows;
     } catch (error) {
-        console.error('Query failed! Error:',error);
+        console.error('Query failed! Error:', error);
     }
     finally {
         // await pool.end(); // סוגר את כל החיבורים ב-pool
@@ -16,10 +16,15 @@ const executeQuery = async (query,value) => {
 };
 
 const getQuery = async (tableName) => {
+    try {
+        const query = `SELECT * FROM ${tableName}`;
+        console.log(query);
+        const result = await executeQuery(query);
+        return result;
+    } catch (error) {
+        console.log("getQuery", error);
+    }
 
-    const query = `SELECT * FROM ${tableName}`;
-    const result = await executeQuery(query);
-    return result;
 }
 
 
@@ -38,8 +43,8 @@ const insertQuery = async (tableName, body) => {
 
         const query = `INSERT INTO ${tableName} (${columns}) VALUES (${placeholders})`;
         // const fullQuery = { query, values };
-        const result = await executeQuery( query,values );
-        console.log("insert, result:",result);
+        const result = await executeQuery(query, values);
+        console.log("insert, result:", result);
         return result;
     } catch (error) {
         console.error('Insert failed:', error.message);
@@ -47,7 +52,11 @@ const insertQuery = async (tableName, body) => {
     }
 };
 
-const updateQuery = async (tableName,body,conditions) => {
+const updateQuery = async (tableName, body, conditions) => {
+    console.log("tableName:", tableName);
+    console.log("body:", body);
+    console.log("conditions:", conditions);
+
     try {
 
         if (!tableName || !body || Object.keys(body).length === 0 || !conditions) {
@@ -55,36 +64,37 @@ const updateQuery = async (tableName,body,conditions) => {
         }
 
         const setClause = Object.entries(body)
-        .map(([key, value]) => `${key}='${value}'`)
-        .join(', ');
-    
+            .map(([key, value]) => `${key}='${value}'`)
+            .join(', ');
+
         const query = `UPDATE ${tableName} SET ${setClause} WHERE ${conditions}`;
         const result = await executeQuery(query);
 
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: "Todo not found or not updated" });
-          }
-          
-          return result;
+        // if (result.affectedRows === 0) {
+        //     return res.status(404).json({ message: "Todo not found or not updated" });
+        // }
 
-    } catch (error) {console.log(error)
-        console.error(error);
+        return result;
+
+    } catch (error) {
+        console.log("errorUpdateQuery", error);
+        // console.error(error);
     }
 
 }
 
 const deleteQuery = async (tableName, conditions) => {
-try {
-    const query = `DELETE FROM ${tableName} WHERE ${conditions}`;
-    const result = await executeQuery(query);
-    return result;
-} catch (error) {
-    console.error(error, "fghgfd");
-}
-    
+    try {
+        const query = `DELETE FROM ${tableName} WHERE ${conditions}`;
+        const result = await executeQuery(query);
+        return result;
+    } catch (error) {
+        console.error(error, "fghgfd");
+    }
+
 }
 
 
-export default{
-    executeQuery, getQuery ,insertQuery ,deleteQuery, updateQuery
+export default {
+    executeQuery, getQuery, insertQuery, deleteQuery, updateQuery
 }

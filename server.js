@@ -3,6 +3,8 @@ import cors from 'cors'
 
 import {userRouter} from './routes/user.js'
 import { todoRouter } from "./routes/todo.js";
+import { commentRouter } from "./routes/comment.js";
+import { postRouter } from "./routes/post.js";
 
 
 const app = express();
@@ -13,6 +15,8 @@ app.use(cors());
 app.use(express.json());
 app.use("/users",userRouter);
 app.use("/todos",todoRouter);
+app.use("/posts",postRouter);
+app.use("/comments",commentRouter);
 
 
 app.get("/",(req,res)=>{
