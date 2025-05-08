@@ -48,16 +48,16 @@ const insertQuery = async (tableName, body) => {
 };
 
 
-// const deleteQuery = async (tableName, conditions) => {
-// try {
-//     const query = `DELETE FROM ${tableName} WHERE ${conditions}`;
-//     const result=await executeQuery(query);
-//     return result;
-// } catch (error) {
-//     console.error(error);
-// }
+const deleteQuery = async (tableName, conditions) => {
+try {
+    const query = `DELETE FROM ${tableName} WHERE ${conditions}`;
+    const result = await executeQuery(query);
+    return result;
+} catch (error) {
+    console.error(error, "fghgfd");
+}
     
-// }
+}
 
 // const updateQuery = async (tableName,body,conditions) => {
 //     try {
@@ -81,6 +81,6 @@ const insertQuery = async (tableName, body) => {
 // }
 
 export default{
-    executeQuery, getQuery ,insertQuery
-    // ,deleteQuery, updateQuery
+    executeQuery, getQuery ,insertQuery ,deleteQuery
+    // , updateQuery
 }

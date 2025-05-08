@@ -2,15 +2,17 @@ import express from "express";
 import {userRouter} from './routes/user.js'
 
 import cors from 'cors'
+import { todoRouter } from "./routes/todo.js";
 
 
 const app = express();
 const port = process.env.port | 3000
 
-
-
 app.use(cors());
 app.use(express.json());
+
+app.use("/users",userRouter);
+app.use("/todos",todoRouter);
 
 
 app.get("/",(req,res)=>{
@@ -18,9 +20,6 @@ app.get("/",(req,res)=>{
 })
 
 
-
-app.use("/users",userRouter);
-// app.use("/teacher",teacher);
 // app.get("/hello",(req,res)=>{
 // let parameters ="";
 //     if(req.query.name){
@@ -44,15 +43,6 @@ app.listen(port, () => {
     //  console.log( process.env)
     console.log(`Example app listening on port ${port}`)
 })
-
-
-
-
-
-
-
-
-
 
 
 
