@@ -33,7 +33,21 @@ export const addUser = async (newUser) => {
     //  throw new Error('שגיאה בהוספת נתונים');
   }
 };
-
+//T add this function
+export const getUser=async(typeCondition,condition)=>{
+   try {
+     let result = await query.getQuery(
+      `users WHERE ${typeCondition} = "${condition}"`
+    );
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log("errorAtFind");
+    //  throw new Error('שגיאה בהוספת נתונים');
+  }
+};
+// let user=await getUser(`name='dfghjklkuyt Cohen'`);
+// console.log(user);
 // קריאה בצורה תקינה
 // const run = async () => {
 //   let som;
@@ -67,4 +81,5 @@ export const addUser = async (newUser) => {
     
 //   }
 // }
-//  run();
+
+

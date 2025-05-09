@@ -1,0 +1,72 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3); /* רקע מעבר צבע */
+    background-attachment: fixed; /* הרקע נשאר קבוע בעת גלילה */
+    background-size: cover; /* כיסוי מלא */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.login {
+    background: #ffffff; 
+    padding: 40px;
+    border-radius: 12px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 320px;
+    text-align: center;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.login input:focus {
+    border-color: #ff6b81; 
+    box-shadow: 0 0 8px rgba(255, 107, 129, 0.3); 
+}
+
+.login .connect {
+    background-color: #ff6b81; 
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.login .connect:hover {
+    background-color: #e2556d; 
+}
+
+.login .connect:active {
+    transform: scale(0.98); 
+}
+
+.login input::placeholder {
+    color: #aaa; 
+    font-style: italic;
+}
+
+@media (max-width: 400px) {
+    .login {
+        width: 90%; 
+    }
+}

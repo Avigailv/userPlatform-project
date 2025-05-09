@@ -1,0 +1,82 @@
+.photo-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    transition: transform 0.2s ease-in-out;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 תמונות בכל שורה */  
+}
+  
+  .photo-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .photo-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .photo-card h5 {
+    font-size: 1.2;
+    margin: 10px 0;
+  }
+  
+  .photo-card p {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button[type="button"] {
+    background-color: #f44336;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #e41e0e;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form button[type="submit"] {
+    background-color: #4CAF50;
+  }
+  
+  form button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  form button[type="button"] {
+    background-color: #f44336;
+  }
+  
+  form button[type="button"]:hover {
+    background-color: #e41e0e;
+  }
+  

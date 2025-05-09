@@ -1,0 +1,148 @@
+/* עיצוב הכללי של ה-Home */
+.home {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 100vh;
+  padding-top: 80px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+}
+
+/* עיצוב הפוסט בתוך ה-home */
+.post-container {
+  border: 1px solid #ddd; /* מסגרת דקה */
+  border-radius: 8px; /* פינות מעוגלות */
+  padding: 16px; /* רווח פנימי */
+  width: 90%; /* רוחב יחסי */
+  max-width: 100%; /* רוחב מקסימלי */
+  background-color: #fed1d1; /* רקע בהיר */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* צל קל */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-left: auto;
+  margin-right: auto;
+  /* overflow-y: auto; */
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.post-container:hover {
+  transform: scale(1.02); /* הגדלה קלה */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* צל מוגבר */
+}
+
+.post-container p {
+  margin: 8px 0; /* רווח בין פסקאות */
+  font-size: 16px; /* גודל טקסט */
+  color: #333; /* צבע טקסט */
+}
+/* עיצוב הכפתור של "הצג את כל התגובות" */
+.post-container .comments-button {
+  width: 90%; /* הכפתור יתפוס את כל הרוחב */
+  padding: 12px; /* רווח פנימי גדול יותר */
+  font-size: 16px; /* טקסט גדול יותר */
+  margin-top: 6px; /* רווח מעל הכפתור */
+  background-color: #de2121; /* צבע רקע ירוק */
+  color: white; /* טקסט בצבע לבן */
+  border: none; /* ללא מסגרת */
+  border-radius: 8px; /* פינות מעוגלות יותר */
+  cursor: pointer; /* שינוי מצביע עכבר */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.post-container .comments-button:hover {
+  background-color: #760e0e; /* גוון כהה יותר בהובר */
+  transform: scale(1.02); /* הגדלה קלה */
+}
+
+.post-container .comments-button:active {
+  background-color: #fc3a3a; /* צבע לחיצה כהה יותר */
+  transform: scale(0.98); /* הקטנה קלה בלחיצה */
+}
+
+
+
+
+.button-group {
+  display: flex; /* מיקום כפתורים בשורה */
+  gap: 12px; /* מרווח בין הכפתורים */
+  justify-content: center; /* מרכז את הכפתורים */
+  /* margin-top: 10px; רווח מעל קבוצת הכפתורים */
+}
+
+.button-group button {
+  padding: 10px 10px; /* רווח פנימי גדול יותר */
+  font-size: 14px; /* גודל טקסט גדול יותר */
+  color: #fff; /* צבע טקסט לבן */
+  background-color: #de375b; /* צבע רקע */
+  border: none; /* ללא מסגרת */
+  border-radius: 6px; /* פינות מעוגלות יותר */
+  cursor: pointer; /* מצביע עכבר */
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  width: 150px; /* רוחב אחיד לכל כפתור */
+  text-align: center; /* מרכז טקסט בכפתור */
+}
+
+.button-group button:hover {
+  background-color: #f11a1a; /* צבע במעבר עכבר */
+  transform: translateY(-3px); /* אפקט תנועה */
+}
+
+.button-group button:active {
+  background-color: #e64759; /* צבע בלחיצה */
+  transform: translateY(2px); /* חזרה במגע */
+}
+
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px 0;
+}
+
+input, textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 8px 0;
+  width: 80%;
+  max-width: 600px;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff6b81;
+  outline: none;
+}
+
+/* עיצוב ההודעות אין פוסטים או טופס ריק */
+p {
+  font-size: 18px;
+  text-align: center;
+  color: #555;
+}
+
+/* התאמות למסכים קטנים */
+@media (max-width: 768px) {
+  .post-container {
+    width: 100%;
+    margin: 10px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  input, textarea {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  form {
+    align-items: stretch;
+  }
+}

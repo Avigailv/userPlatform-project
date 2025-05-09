@@ -65,4 +65,4 @@ const run = async () => {
   await updateComment(updated, id);
   console.log(`Post with ID ${id} updated.`);
 };
-run();
+// run();

@@ -1,0 +1,143 @@
+/* עיצוב כללי */
+.posts-container {
+  display: flex;
+  flex-wrap: wrap; /* תמיכה ברספונסיביות */
+  gap: 20px;
+  padding: 20px;
+  min-height: 100vh;
+  flex-direction: row-reverse; /* הופך את הסדר כך שהפוסטים יהיו בצד ימין */
+}
+
+
+
+.posts-section {
+  flex: 2; /* שני שלישים */
+  background-color: #ffffff; /* רקע לבן לפוסטים */
+  padding: 20px;
+  border: 1px solid #f8b5b5; /* מסגרת עדינה בגוון ורוד */
+  border-radius: 12px; /* פינות מעוגלות */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* צל קל ונעים */
+  height: 500px; /* גובה מקסימלי לאזור הפוסטים */
+  overflow-y: auto; /* גלילה אנכית במקרה של תוכן גדול */
+}
+
+
+/* כותרות */
+h1 {
+  text-align: center;
+  color: #d9534f; /* אדום בוהק */
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* כפתורים */
+button {
+  padding: 10px 25px;
+  margin: 5px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #f76c6c; /* צבע אדום-ורוד לכפתור */
+  border: none;
+  border-radius: 8px; /* פינות מעוגלות */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #e05252; /* אדום כהה יותר */
+  transform: scale(1.05); /* הגדלה קלה */
+}
+
+button:active {
+  background-color: #c73f3f; /* אדום כהה מאוד */
+  transform: scale(0.97); /* לחיצה פנימה */
+}
+
+/* מיכל כפתורים */
+.button-group {
+  display: flex;
+  gap: 10px; /* מרווח בין הכפתורים */
+  justify-content: center; /* מרכז את הכפתורים */
+  margin-top: 20px;
+}
+
+/* טופס הוספת פוסט */
+.add-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.add-post-form input,
+.add-post-form textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #f8b5b5; /* מסגרת ורדרדה */
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff0f0;
+}
+
+.add-post-form input:focus,
+.add-post-form textarea:focus {
+  border-color: #f76c6c;
+  outline: none;
+  box-shadow: 0 0 8px rgba(247, 108, 108, 0.4); /* אפקט פוקוס */
+}
+
+
+
+/* רשימת הפוסטים */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  /* overflow-y: auto;  */
+}
+
+.posts-list p {
+  text-align: center;
+  color: #a94442; /* גוון אדום כהה */
+  font-size: 18px;
+}
+
+/* עיצוב עבור search-section */
+.search-section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+  .search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+/* אזור החיפוש */
+.search-section {
+  flex: 1;
+  background-color: #f9f9f9; 
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+  padding: 20%;
+  height: fit-content;
+}
+
+/* רספונסיביות */
+@media (max-width: 768px) {
+  .posts-container {
+    flex-direction: column-reverse; /* הפוסטים יהיו מעל במסכים קטנים */
+  }
+
+  .posts-section,
+  .search-section {
+    flex: none; /* כל אחד יתפוס 100% רוחב */
+    width: 100%;
+  }
+}

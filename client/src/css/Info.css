@@ -1,0 +1,43 @@
+
+.user-page {
+    font-family: Arial, sans-serif;
+    padding: 20px 20px;
+    max-width: 500px;
+    margin: 5% auto;
+    margin-left: 35%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed; /* דבק במיקום */
+align-items: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-details p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .user-details p strong {
+    color: #333;
+  }
+  
+  .user-details {
+    padding: 10px;
+  }
+  
+  .user-details p:nth-child(odd) {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  

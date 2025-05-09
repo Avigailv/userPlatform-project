@@ -1,0 +1,96 @@
+/* עיצוב כולל לקומפוננטה */
+.search-bar {
+    display: flex;
+    flex-direction: column; /* עיצוב מאורך */
+    gap: 12px; /* רווח בין האלמנטים */
+    padding: 20px; /* רווח פנימי */
+    /* background-color: #ffffff; רקע לבן */
+    border: 1px solid #ddd; /* מסגרת אפורה */
+    border-radius: 12px; /* פינות מעוגלות */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* צל עדין */
+    width: 100%; /* מתאים לגודל המכולה */
+    max-width: 400px; /* גבול רוחב מקסימלי */
+    margin: 0 auto; /* מרכז את הקומפוננטה */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #f9f9f9;
+}
+
+/* עיצוב לשדה הטקסט */
+.search-input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #f9f9f9;
+    color: #333;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 8px #ff6b81; /* צל אדום כשנמצא בפוקוס */
+    outline: none;
+}
+
+/* עיצוב לבחירה (dropdown) */
+.search-select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f9f9f9;
+    color: #2c2222;
+    cursor: pointer;
+}
+
+/* עיצוב לכפתורים */
+.search-bar button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ff6b81;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.search-bar button:hover {
+    background-color: #e2556d; /* אדום כהה יותר */
+}
+
+.search-bar button:active {
+    transform: scale(0.98); /* אפקט לחיצה */
+}
+
+/* עיצוב לכפתור ניקוי */
+.clear-button {
+    background-color: #f1c40f;
+    color: #ffffff;
+}
+
+.clear-button:hover {
+    background-color: #d4ac0d; /* כהה יותר */
+}
+
+.clear-button:active {
+    transform: scale(0.98); /* אפקט לחיצה */
+}
+
+/* עיצוב לרכיב של מצב ביצוע */
+.search-bar label {
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-bar input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+
+

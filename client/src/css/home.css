@@ -1,0 +1,128 @@
+הגדרת ה-HTML וה-Body שיתפרשו על כל המסך
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    height: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .home יתפשט על כל גובה המסך */
+.home {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* מאפשר ל-home להתפשט לגובה שנשאר */
+    min-height: 100vh; /* מבטיח שיתפרש על כל המסך */
+    min-width: 100vh;
+    padding-top: 80px; /* נותן רווח מעל התוכן כך שהוא לא יכסה את ה-header */
+}
+
+/* ה-header יהיה דבוק למעלה */
+.header {
+    background: linear-gradient(135deg, #ff6b81, #ff856d);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+    margin: 0;
+    position: fixed; /* קובע שה-header לא יזוז */
+    top: 0; /* דבק לחלק העליון של המסך */
+    left: 0; /* דבק גם בצד השמאלי */
+    z-index: 1000; /* מבטיח שה-header יהיה מעל כל אלמנט אחר */
+    box-shadow: none; /* הסרת אפקט הצללים */
+}
+
+/* ה-menu יהיה דבוק מתחת ל-header עם רווח נוסף */
+.menu {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed; /* דבק במיקום */
+    top:70px; /* מיקום מתחת ל-header עם רווח נוסף */
+    left: 0;
+    z-index: 999; /* שמירה על סדר השכבות, פחות מ-header כדי לא לחסום אותו */
+    box-shadow: none; /* הסרת אפקט הצללים */
+}
+
+/* עיצוב הקישורים ב-menu */
+.menu a {
+    text-decoration: none;
+    color: #ff6b81;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 15px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* אפקט hover על הקישורים ב-menu */
+.menu a:hover {
+    background-color: #ff6b81;
+    color: white;
+}
+
+/* תוכן העמוד */
+.main-content {
+    flex-grow: 1; /* התוכן יתפשט על כל השטח הנותר */
+    /* padding: 20px; */
+    text-align: center;
+    /* background-color: #ffffff; */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px 12px 0 0;
+    overflow-y: auto;
+    margin-top: 120px; 
+    
+    /* border: 3px solid #ff6b81; גבול סביב ה-content */
+    min-height: 100vh; /* מבטיח שיתקיים גבול אפילו אם התוכן ריק */
+
+
+    padding: 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 95%;
+    /* margin: 0; */
+    position: fixed;
+    top: 0; /* דבק לחלק העליון של המסך */
+    left: 0; /* דבק גם בצד השמאלי */
+    z-index: 1000; /* מבטיח שה-header יהיה מעל כל אלמנט אחר */
+ 
+    box-shadow: none; /* הסרת אפקט הצללים */
+    overflow-y: auto; /* גלילה פנימית */
+}
+
+/* עיצוב הטקסט בתוכן */
+.main-content p {
+    font-size: 18px;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* התאמות למסכים קטנים */
+@media (max-width: 768px) {
+    .header {
+        font-size: 24px;
+        padding: 15px 0;
+    }
+
+    .menu a {
+        font-size: 14px;
+        margin: 0 10px;
+        padding: 8px 16px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+}

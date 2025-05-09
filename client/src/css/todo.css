@@ -1,0 +1,106 @@
+/* עיצוב כולל לפריט משימה */
+.todo {
+  display: flex;
+  justify-content: space-between; /* מרווח בין הכפתורים לתוכן */
+  align-items: center; /* ממרכז את התוכן והכפתורים לאורך הציר האנכי */
+  width: 95%; /* רוחב כללי */
+  margin: 10px 20px; /* מרכז את המשימה */
+  background: linear-gradient(145deg, #f4a7b0, #f6e9ec); /* רקע עדין בגווני ורוד-בז' */
+  border: 1px solid #9b696f; /* גבול ורוד רך */
+  border-radius: 10px; /* פינות מעוגלות */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 10px; /* ריווח פנימי */
+
+
+}
+
+.todo:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* עיצוב הכפתורים בצד שמאל */
+.todo-buttons {
+  display: flex;
+  flex-direction: column; /* כפתורים אחד מתחת לשני */
+  gap: 10px; /* ריווח בין הכפתורים */
+  margin-right: 10px; /* מרווח בין הכפתורים לטקסט */
+}
+
+/* עיצוב כפתורים */
+.todo button {
+  padding: 8px 16px; /* גודל בינוני-גדול */
+  font-size: 0.9rem; /* גודל טקסט גדול אך לא ענק */
+  font-family: 'Arial', sans-serif; /* פונט שונה */
+  color: #fff;
+  border: none;
+  border-radius: 8px; /* פינות מעוגלות */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.todo button:hover {
+  transform: scale(1.05); /* כפתור גדל מעט במעבר עכבר */
+}
+
+/* כפתור עדכון */
+.todo button.update {
+  background-color: #f28491; /* ורוד עדין */
+}
+
+.todo button.update:hover {
+  background-color: #f44055; /* ורוד כהה יותר */
+}
+
+/* כפתור מחיקה */
+.todo button.delete {
+  background-color: #f28491; /* אדום-ורוד רך */
+}
+
+.todo button.delete:hover {
+  background-color: #f44055; /* אדום כהה יותר */
+}
+
+/* עיצוב אזור הטקסט */
+.todo-content {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+
+  gap: 10px; /* ריווח בין הצ'קבוקס לטקסט */
+  flex: 1; /* משאיר מקום לכפתורים בצד */
+  text-align: right; /* יישור לימין */
+}
+
+.todo-content p {
+  margin: 0;
+  font-size: 0.85rem; /* טקסט קטן יותר */
+  font-family: 'Courier New', Courier, monospace; /* שינוי פונט */
+  color: #7c4a4e; /* צבע טקסט ורוד כהה */
+  line-height: 1.2;
+}
+
+.todo-content .completed {
+  text-decoration: line-through;
+  color: #b8a2a6; /* גוון ורוד אפרפר למשימה שבוצעה */
+}
+
+/* עיצוב קלט הצ'קבוקס */
+.todo-content input[type="checkbox"] {
+  margin-left: 10px; /* מרווח בין הצ'קבוקס לטקסט */
+  transform: scale(1.1); /* צ'קבוקס גדול יותר */
+  cursor: pointer;
+}
+
+/* רספונסיביות */
+@media (max-width: 768px) {
+  .todo {
+    width: 90%; /* מתאים למסכים קטנים יותר */
+  }
+
+  .todo button {
+    padding: 6px 14px; /* ריווח פנימי קטן יותר במסכים קטנים */
+    font-size: 0.85rem; /* טקסט קטן יותר במסכים קטנים */
+  }
+}

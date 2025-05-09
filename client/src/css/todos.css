@@ -1,0 +1,108 @@
+/* עיצוב קונטיינר עמוד */
+.page-container {
+  display: flex;
+  height: 100vh; /* גובה מסך מלא */
+  overflow: hidden; /* ביטול גלילה גלובלית */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px; /* ריווח מסביב */
+  margin-bottom: 10%;
+  box-sizing: border-box;
+  justify-content: center; /* מרכז את כל התוכן */
+  gap: 20px; /* ריווח בין החלקים */
+}
+
+/* עיצוב קונטיינר המשימות */
+.todos-section {
+  flex: 2; /* שני שלישים מהעמוד */
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 15px; /* פינות מעוגלות */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* הצללה נעימה */
+  overflow: hidden; /* ביטול גלילה פנימית של קונטיינר המשימות */
+  transition: transform 0.2s ease;
+  height: 500px; /* גובה מקסימלי לאזור הפוסטים */
+}
+
+.todos-section:hover {
+  transform: scale(1.02); /* אפקט זום קל */
+}
+
+/* עיצוב רשימת המשימות */
+.todos-list {
+  flex: 1;
+  /* background-color: #fdd8d2; */
+  /* border: 1px solid #ffc1c5; גבול ורדרד */
+  /* border-radius: 10px; */
+  margin: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+  overflow-y: auto; /* גלילה פנימית */
+  max-height: calc(100% - 60px); /* שמירה על מקום לכותרת */
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* הצללה פנימית */
+}
+
+/* פסי גלילה ספציפיים לרשימת המשימות בלבד */
+.todos-list::-webkit-scrollbar {
+  width: 6px; /* רוחב פס הגלילה */
+}
+
+.todos-list::-webkit-scrollbar-thumb {
+  background-color: #efd1ce; /* צבע פס הגלילה */
+  border-radius: 10px; /* עיגול הפינות */
+}
+
+.todos-list::-webkit-scrollbar-thumb:hover {
+  background-color: #e85e55; /* צבע כהה יותר במעבר עכבר */
+}
+
+.todos-list::-webkit-scrollbar-track {
+  background-color: #ffeef0; /* רקע פס הגלילה */
+  border-radius: 10px;
+}
+
+/* ריווח בין החלקים */
+.search-section,
+.todos-section {
+  margin: 10px;
+}
+
+/* התאמה לרספונסיביות */
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column; /* שינוי כיוון לסידור אנכי */
+  }
+
+  .search-section,
+  .todos-section {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+}
+
+
+
+/* עיצוב עבור search-section */
+.search-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  
+}
+
+/* עיצוב עבור הכותרת - חיפוש */
+.search-section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* עיצוב עבור מיכל ה-search bar */
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
