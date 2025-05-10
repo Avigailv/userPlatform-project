@@ -18,6 +18,52 @@ export const getAllUsers = async () => {
 
 
 
+
+export const getUserWithPassword = async (username, password) => {
+  try {
+    const queryStr = `users
+  JOIN passwords ON users.id = passwords.user_id
+  WHERE users.username = ${username} AND passwords.password_hash = ${password}
+    `;
+    const result = await query.getQuery(queryStr);
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log("errorAtFind", error);
+    throw error;
+  }
+};
+
+
+
+
+
+export const getUser = async (key1, val1, key2, val2) => {
+  try {
+    const queryStr = `SELECT * FROM users WHERE ${key1} = ? AND ${key2} = ?`;
+    let result = await query.getQuery(queryStr, [val1, val2]);
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log("errorAtFind");
+  }
+};
+export const getUserById = async (key1, val1, key2, val2) => {
+  try {
+    const queryStr = `SELECT * FROM password_hash WHERE ${key1} = ? AND ${key2} = ?`;
+    let result = await query.getQuery(queryStr, [val1, val2]);
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log("errorAtFind");
+  }
+};
+
+
+
+
+
+
 // פונקציה להוספת משתמש חדש
 export const addUser = async (newUser) => {
 
@@ -33,19 +79,25 @@ export const addUser = async (newUser) => {
     //  throw new Error('שגיאה בהוספת נתונים');
   }
 };
-//T add this function
-export const getUser=async(typeCondition,condition)=>{
-   try {
-     let result = await query.getQuery(
-      `users WHERE ${typeCondition} = "${condition}"`
-    );
-    console.log(result);
-    return result;
-  } catch (error) {
-    console.log("errorAtFind");
-    //  throw new Error('שגיאה בהוספת נתונים');
-  }
-};
+
+
+// //T add this function
+// export const getUser=async(typeCondition,condition)=>{
+//    try {
+//      let result = await query.getQuery(
+//       `users WHERE ${typeCondition} = "${condition}"`
+//     );
+//     console.log(result);
+//     return result;
+//   } catch (error) {
+//     console.log("errorAtFind");
+//     //  throw new Error('שגיאה בהוספת נתונים');
+//   }
+// };
+
+
+
+
 // let user=await getUser(`name='dfghjklkuyt Cohen'`);
 // console.log(user);
 // קריאה בצורה תקינה

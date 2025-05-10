@@ -4,8 +4,11 @@ import { deleteTodo, getAllTodos, addTodo, updateTodo } from "../services/todo.j
 export class Todo {
 
     getAll = async (req, res) => {
+      const {user_id } = req.query;
+       
+    console.log(user_id);
         try {
-            let todos = await getAllTodos();
+            let todos = await getAllTodos(user_id);
             console.log('Successfully fetched all todos');
             res.send(todos);
         } catch (error) {

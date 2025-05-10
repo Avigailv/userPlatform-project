@@ -1,15 +1,34 @@
 import query from './query.js';
 
-export const getAllTodos = async () => {
+// export const getAllTodos = async (user_id) => {
+
+
+//   try {
+//     let rows = await query.getQuery('todos');
+//     console.log("rows", rows);
+//     return rows;
+//   } catch (error) {
+//     console.log("errorintodos");
+//     throw new Error('שגיאה בשאילתת נתונים');
+//   }
+// }
+
+
+export const getAllTodos = async (user_id) => {
   try {
-    let rows = await query.getQuery('todos');
+    // עדכון השאילתה כדי לכלול את ה-user_id
+    const queryStr = `todos WHERE user_id = ${user_id}`;
+    console.log(queryStr)
+    // שליחת השאילתה עם ה-user_id כפרמטר
+    let rows = await query.getQuery(queryStr);
     console.log("rows", rows);
     return rows;
   } catch (error) {
-    console.log("errorintodos");
+    console.log("errorintodos", error);
     throw new Error('שגיאה בשאילתת נתונים');
   }
 }
+
 
 export const addTodo = async (newTodo) => {
   try {

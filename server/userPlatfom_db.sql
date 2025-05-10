@@ -45,3 +45,7 @@ CREATE TABLE todos (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+   SELECT users.*
+      FROM users
+      JOIN passwords ON users.id = passwords.user_id
+      WHERE users.username = "123"  AND passwords.password_hash = "1234567"

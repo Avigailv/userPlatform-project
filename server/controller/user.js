@@ -1,4 +1,4 @@
-import { addUser, getAllUsers, getUser } from "../services/user.js";
+import { addUser, getAllUsers, getUser, getUserById,getUserWithPassword } from "../services/user.js";
 import query from "../services/query.js";
 export class User {
     get = async (req, res) => {
@@ -9,10 +9,10 @@ export class User {
         const firstKey = keys[0];
         const value = queryParams[firstKey];   // '7' או 'avigail123'
 
-    console.log(`Looking for user where ${firstKey} = ${value}`);
+        console.log(`Looking for user where ${firstKey} = ${value}`);
         console.log(req.query.username);
         try {
-            let user = await getUser(firstKey,value);
+            let user = await getUser(firstKey, value);
             console.log('Successfully fetched user');
             res.send(user);
         } catch (error) {
@@ -20,6 +20,43 @@ export class User {
             res.status(500).send(error.message);
         }
     }
+
+
+getByPassword = async (req, res) => {
+    const { username, password } = req.query;
+    // הוסף לוג לבדוק אם הערכים מגיעים כראוי
+    console.log("username:", username);
+    console.log("password:", password);
+    
+    if (!username || !password) {
+        return res.status(400).send("Missing parameters");
+    }
+
+    try {
+        const user = await getUserWithPassword(username, password); // הפונקציה עם ה-JOIN שהגדרנו קודם
+        res.send(user);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
+
+
+
+    getById = async (req, res) => {
+        const { username, id } = req.query;
+
+        if (!username || !id) {
+            return res.status(400).send("Missing parameters");
+        }
+
+        try {
+            const user = await getUserById("username", username, "id", id);
+            res.send(user);
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    };
 
     getAll = async (req, res) => {
         try {
