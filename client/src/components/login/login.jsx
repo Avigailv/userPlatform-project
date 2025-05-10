@@ -13,7 +13,7 @@ function Login() {
     async function handleLogin(e) {
         e.preventDefault();
         try {
-            const data = await apiService.fetchData(`users?username=${user.username}&website=${user.password}`);
+            const data = await apiService.fetchData(`users?username='${user.username}'&password='${user.password}'`);
             if (data.length == 0) {
                 throw "משתמש לא מורשה!"
             }
@@ -37,7 +37,7 @@ function Login() {
                     required
                 />
                 <input
-                    type="password"
+                    type="text"
                     placeholder='Password'
                     value={user.password}
                     onChange={(e) => setUser({ ...user, password: e.target.value })}

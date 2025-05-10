@@ -17,7 +17,7 @@ function Home() {
       <div className="menu">
         <Link to="/login" replace={true} onClick={handleLogout}>Logout</Link>
         <Link to="Info">Info</Link>
-        <Link to="Albums">Albums</Link>
+        {/* <Link to="Albums">Albums</Link> */}
         <Link to="Posts">Posts</Link>
         <Link to="Todos">Todos</Link>
       </div>

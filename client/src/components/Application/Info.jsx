@@ -13,7 +13,7 @@ function Info() {
           <p><strong>שם משתמש:</strong> {currentUser.username}</p>
           <p><strong>אימייל:</strong> {currentUser.email}</p>
           <p><strong>טלפון:</strong> {currentUser.phone}</p>
-          <p><strong>כתובת:</strong> {`${currentUser.address.street}, דירה ${currentUser.address.suite}, ${currentUser.address.city}`}</p>
+          {/* <p><strong>כתובת:</strong> {`${currentUser.address.street}, דירה ${currentUser.address.suite}, ${currentUser.address.city}`}</p> */}
         </div>
       </div>
     </div>
