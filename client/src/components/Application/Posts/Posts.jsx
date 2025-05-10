@@ -29,7 +29,7 @@ function Posts() {
 
   async function fetchUserPosts() {
     try {
-      const data = await apiService.fetchData(`posts?userId=${currentUser.id}`);
+      const data = await apiService.fetchData(`posts?user_id=${currentUser.id}`);
       setPosts(data);
     } catch (error) {
       alert(`שגיאה במהלך זיהוי המשתמש`);

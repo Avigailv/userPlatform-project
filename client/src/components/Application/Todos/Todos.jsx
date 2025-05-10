@@ -19,7 +19,7 @@ function Todos() {
 
   async function fetchUserTodos() {
     try {
-      const data = await apiService.fetchData(`todos?userId=${(currentUser.id)}`);
+      const data = await apiService.fetchData(`todos?user_id=${(currentUser.id)}`);
       setTodos(data);
     }
     catch (error) {
