@@ -31,7 +31,8 @@ export class Todo {
 
             //  add validate
 
-            res.send({ id: todoResult });
+            // res.send({ id: todoResult });
+            res.send(todoResult);
         } catch (error) {
             console.log('there was an error:', error.message);
             res.status(500).send(error.message, "controllerTodo");

@@ -30,17 +30,52 @@ export const getAllTodos = async (user_id) => {
 }
 
 
+
 export const addTodo = async (newTodo) => {
   try {
     let result = await query.insertQuery(
       "todos", newTodo
     );
-    return result.insertId;
+
+    let resultGetAllById= await getTodo("id",result.insertId);
+    return resultGetAllById;
+    // return result.insertId;
+   
   } catch (error) {
     console.log("erroratadd");
     //  throw new Error('שגיאה בהוספת נתונים');
   }
 };
+
+
+
+//T add this function
+export const getTodo=async(typeCondition,condition)=>{
+  console.log(typeCondition,condition);
+   try {
+     let result = await query.getQuery(
+      `todos WHERE ${typeCondition} = "${condition}"`
+    );
+    console.log(result);
+    return result[0];
+  } catch (error) {
+    console.log("errorAtFind");
+    //  throw new Error('שגיאה בהוספת נתונים');
+  }
+};
+
+
+// export const addTodo = async (newTodo) => {
+//   try {
+//     let result = await query.insertQuery(
+//       "todos", newTodo
+//     );
+//     return result.insertId;
+//   } catch (error) {
+//     console.log("erroratadd");
+//     //  throw new Error('שגיאה בהוספת נתונים');
+//   }
+// };
 
 export const updateTodo = async (todo,id) => {
   try {
