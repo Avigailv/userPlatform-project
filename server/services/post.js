@@ -2,9 +2,6 @@ import query from './query.js';
 
 export const getAllPosts = async () => {
   try {
-
-    // const queryStr = `posts WHERE user_id = ${user_id}`;
-    // console.log(queryStr)
     let rows = await query.getQuery("posts");
     console.log("rows", rows);
     return rows;
@@ -13,8 +10,6 @@ export const getAllPosts = async () => {
     throw new Error('שגיאה בשאילתת נתונים');
   }
 }
-
-
 
 export const addPost = async (newPost) => {
   try {
@@ -32,9 +27,6 @@ export const addPost = async (newPost) => {
   }
 };
 
-
-
-//T add this function
 export const getPost=async(typeCondition,condition)=>{
   console.log(typeCondition,condition);
    try {
@@ -49,19 +41,6 @@ export const getPost=async(typeCondition,condition)=>{
   }
 };
 
-// export const addPost = async (newPost) => {
-//   try {
-//     let result = await query.insertQuery(
-//       "posts", newPost
-//     );
-//     return result.insertId;
-//   } catch (error) {
-//     console.log("erroratadd");
-//     //  throw new Error('שגיאה בהוספת נתונים');
-//   }
-// };
-
-
 export const updatePost = async (post, id) => {
   try {
     let result = await query.updateQuery(
@@ -72,8 +51,7 @@ export const updatePost = async (post, id) => {
     console.log("erroratUpdate");
     //  throw new Error('שגיאה בהוספת נתונים');
   }
-}
-
+};
 
 export const deletePost = async (id) => {
   try {
@@ -84,6 +62,4 @@ export const deletePost = async (id) => {
     console.error("שגיאה במחיקת הפוסט:", error.message);
     throw new Error('שגיאה במחיקת הנתונים');
   }
-}
-
-
+};

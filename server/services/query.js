@@ -24,9 +24,7 @@ const getQuery = async (tableName) => {
     } catch (error) {
         console.log("getQuery", error);
     }
-
 }
-
 
 const insertQuery = async (tableName, body) => {
     try {
@@ -94,6 +92,7 @@ const deleteQuery = async (tableName, conditions) => {
     }
 
 }
+
 const patchQuery = async (id, key, value) => {
     const formattedValue = typeof value === 'boolean' ? value : `'${value}'`;
     const query = `UPDATE todos SET ${key} = ${formattedValue} WHERE id = ${id}`;
@@ -109,6 +108,5 @@ const patchQuery = async (id, key, value) => {
 
 
 export default {
-     executeQuery,
-     getQuery, insertQuery, deleteQuery, updateQuery,patchQuery
+     executeQuery,getQuery, insertQuery, deleteQuery, updateQuery,patchQuery
 }
