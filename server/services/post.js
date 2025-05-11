@@ -2,7 +2,10 @@ import query from './query.js';
 
 export const getAllPosts = async () => {
   try {
-    let rows = await query.getQuery('posts');
+
+    // const queryStr = `posts WHERE user_id = ${user_id}`;
+    // console.log(queryStr)
+    let rows = await query.getQuery("posts");
     console.log("rows", rows);
     return rows;
   } catch (error) {
@@ -10,6 +13,10 @@ export const getAllPosts = async () => {
     throw new Error('שגיאה בשאילתת נתונים');
   }
 }
+
+
+
+
 
 export const addPost = async (newPost) => {
   try {

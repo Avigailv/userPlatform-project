@@ -17,7 +17,7 @@ function Comments({ postId }) {
 
   async function fetchComments(postId) {
     try {
-      const data = await apiService.fetchData(`comments?postId=${postId}`);
+      const data = await apiService.fetchData(`comments?post_id=${postId}`);
       setComments(data);
       setShowComments(true); 
     } catch (error) {
@@ -33,7 +33,7 @@ function Comments({ postId }) {
       return;
     }
     const newCommentData = {
-      postId: postId,
+      post_id: postId,
       name: newComment.name.trim(),
       email: currentUser.email,
       body: newComment.body.trim(),

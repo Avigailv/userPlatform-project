@@ -52,7 +52,8 @@ function Posts() {
       return;
     }
     const newPostData = {
-      userId: currentUser.id,
+      // post_id: currentUser.id,
+      user_id:currentUser.id,
       title: newPost.title.trim(),
       body: newPost.body.trim(),
     };

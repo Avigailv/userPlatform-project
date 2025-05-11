@@ -3,8 +3,12 @@ import query from "../services/query.js"; // או הנתיב הנכון לקוב
 
 export class Comment {
     getAll = async (req, res) => {
+         const { post_id } = req.query;
+
+        console.log(post_id);
         try {
-            let comments = await getAllComment();
+
+            let comments = await getAllComment(post_id);
             console.log('Successfully fetched all comments');
             res.send(comments);
         } catch (error) {

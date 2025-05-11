@@ -32,14 +32,18 @@ function Todos() {
     if (!newTitle.trim()) {
       return;
     }
+    console.log(newTitle.trim());
     const newTodo = {
-      userId: currentUser.id,
+      user_id: currentUser.id,
       title: newTitle.trim(),
       completed: false
     };
     try {
       const createdTodo = await apiService.addData(`todos`, newTodo)
-      setTodos((prevTodos) => [...prevTodos, createdTodo]); 
+console.log("createdTodo:", createdTodo);
+
+      setTodos((prevTodos) => [...prevTodos, createdTodo]);
+
       setNewTitle("");
       setIsAddingTodo(false); // סגירת הטופס
     }

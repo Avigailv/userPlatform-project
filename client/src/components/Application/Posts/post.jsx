@@ -17,7 +17,7 @@ function Post({ post, setPosts }) {
       return;
     }
     try {
-      const comments = await apiService.fetchData(`comments?postId=${postId}`);
+      const comments = await apiService.fetchData(`comments?post_id=${postId}`);
       comments.forEach(comment => {
         apiService.deleteData(`comments/${comment.id}`)
       });

@@ -25,6 +25,25 @@ export async function fetchData(apiPath) {
 }
 
 //הוספה 
+// export async function addData(apiPath, dataToAdd) {
+//     try {
+//         const response = await fetch(`${BASE_URL}/${apiPath}`, {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(dataToAdd),
+//         });
+//         if (!response.ok) {
+//             throw (`שגיאה: ${response.status}`);
+//         }
+//     //  console.log("res",response,response.json());
+//         return await response.json();
+//     }
+//     catch (error) {
+//         alert(`שגיאה בהוספה : ${error.message}`);
+//     }
+// }
+
+
 export async function addData(apiPath, dataToAdd) {
     try {
         const response = await fetch(`${BASE_URL}/${apiPath}`, {
@@ -33,15 +52,14 @@ export async function addData(apiPath, dataToAdd) {
             body: JSON.stringify(dataToAdd),
         });
         if (!response.ok) {
-            throw (`שגיאה: ${response.status}`);
+            throw new Error(`שגיאה ${response.status}`);
         }
         return await response.json();
     }
     catch (error) {
-        alert(`שגיאה בהוספה : ${error.message}`);
+        alert(`שגיאה בהוספה"  ${error.message}`);
     }
 }
-
 // מחיקה
 export async function deleteData(apiPath) {
     try {

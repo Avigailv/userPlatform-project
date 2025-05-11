@@ -1,12 +1,17 @@
 
-import { addPost, getAllPosts,deletePost ,updatePost} from "../services/post.js";
+import { addPost, getAllPosts, deletePost, updatePost } from "../services/post.js";
 
 
 export class Post {
 
     getAll = async (req, res) => {
+        // const { user_id } = req.query;
+
+        // console.log(user_id);
         try {
+            // let posts = await getAllPosts(user_id);
             let posts = await getAllPosts();
+
             console.log('Successfully fetched all posts');
             res.send(posts);
         } catch (error) {
@@ -37,29 +42,29 @@ export class Post {
         }
     }
 
-        update = async (req, res) => {
-            const id = req.params.id;
-            const updatedData = req.body;
+    update = async (req, res) => {
+        const id = req.params.id;
+        const updatedData = req.body;
 
-            try {
-                let result = await updatePost(updatedData,id );
-                console.log("Successfully update item:", result);
-                res.status(200).json({ message: "post updated successfully" });
-            } catch (error) {
-                res.status(500).json({ error: "Failed to update post" });
-            }
+        try {
+            let result = await updatePost(updatedData, id);
+            console.log("Successfully update item:", result);
+            res.status(200).json({ message: "post updated successfully" });
+        } catch (error) {
+            res.status(500).json({ error: "Failed to update post" });
         }
+    }
 
-        delete = async (req, res) => {
-            try {
-                let id = req.params.id;
-                let result = await deletePost(id);
-                console.log("Successfully deleted item:", result);
-                res.send({ date: "post deleted in success" });
-            } catch (error) {
-                console.error("Error deleting item:", error.message);
-                res.status(500).send("Failed to delete post");
-            }
+    delete = async (req, res) => {
+        try {
+            let id = req.params.id;
+            let result = await deletePost(id);
+            console.log("Successfully deleted item:", result);
+            res.send({ date: "post deleted in success" });
+        } catch (error) {
+            console.error("Error deleting item:", error.message);
+            res.status(500).send("Failed to delete post");
         }
+    }
 
 }
