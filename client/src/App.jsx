@@ -2,8 +2,6 @@ import Home from '../src/components/home';
 import Login from '../src/components/login/login';
 import Register from '../src/components/login/register';
 import FullRegister from '../src/components/login/fullRegister';
-import Albums from './components/Application/Albums/Albums';
-import Album from './components/Application/Albums/album';
 import Info from './components/Application/Info';
 import Posts from './components/Application/Posts/Posts';
 import Post from './components/Application/Posts/post';
@@ -24,8 +22,6 @@ function App() {
         <Route path="/fullRegister" element={<FullRegister />} />
         <Route path="home/users/:userId" element={<Home />}>
           <Route path="Info" element={<Info />} />
-          <Route path="Albums" element={<Albums />} />
-          <Route path="Albums/:albumId/photos" element={<Album />} />
           <Route path="Posts" element={<Posts />}>
             <Route path=":postId" element={<Post />} >
               <Route path="Comments" element={<Comments />} >

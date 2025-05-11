@@ -38,6 +38,7 @@ function Comments({ postId }) {
       email: currentUser.email,
       body: newComment.body.trim(),
     };
+    console.log("newCommentData:"  ,newCommentData);
     try {
       const createdComment = await apiService.addData(`comments`, newCommentData)
       setComments((prevComments) => [...prevComments, createdComment]); // עדכון רשימת הפוסטים

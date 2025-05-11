@@ -75,7 +75,7 @@ function Post({ post, setPosts }) {
         <div className="post-details" onClick={(e) => e.stopPropagation()}>
           <p>{post.body}</p>
 
-          {post.userId == currentUser.id && (
+          {post.user_id == currentUser.id && (
             <div className="button-group">
               <button onClick={() => { handleDeletePost(post.id) }}>מחיקה</button>
               <button onClick={(event) => { handleUpdateClick(event) }}>

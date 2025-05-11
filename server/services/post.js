@@ -16,19 +16,50 @@ export const getAllPosts = async () => {
 
 
 
-
-
 export const addPost = async (newPost) => {
   try {
     let result = await query.insertQuery(
       "posts", newPost
     );
-    return result.insertId;
+
+    let resultGetById= await getPost("id",result.insertId);
+    return resultGetById;
+    // return result.insertId;
+   
   } catch (error) {
     console.log("erroratadd");
     //  throw new Error('שגיאה בהוספת נתונים');
   }
 };
+
+
+
+//T add this function
+export const getPost=async(typeCondition,condition)=>{
+  console.log(typeCondition,condition);
+   try {
+     let result = await query.getQuery(
+      `posts WHERE ${typeCondition} = "${condition}"`
+    );
+    console.log(result);
+    return result[0];
+  } catch (error) {
+    console.log("errorAtFind");
+    //  throw new Error('שגיאה בהוספת נתונים');
+  }
+};
+
+// export const addPost = async (newPost) => {
+//   try {
+//     let result = await query.insertQuery(
+//       "posts", newPost
+//     );
+//     return result.insertId;
+//   } catch (error) {
+//     console.log("erroratadd");
+//     //  throw new Error('שגיאה בהוספת נתונים');
+//   }
+// };
 
 
 export const updatePost = async (post, id) => {

@@ -2,7 +2,7 @@ import promisePool from "./db.js";
 const connectToDb = promisePool;
 import sql from 'mysql2';
 
-const executeQuery = async (query, value) => {
+export const executeQuery = async (query, value) => {
     try {
         const [rows] = await promisePool.query(query, value);
         console.log('Query result:', rows);
@@ -42,6 +42,7 @@ const insertQuery = async (tableName, body) => {
         );
 
         const query = `INSERT INTO ${tableName} (${columns}) VALUES (${placeholders})`;
+        console.log(query);
         // const fullQuery = { query, values };
         const result = await executeQuery(query, values);
         console.log("insert, result:", result);
@@ -93,8 +94,21 @@ const deleteQuery = async (tableName, conditions) => {
     }
 
 }
+const patchQuery = async (id, key, value) => {
+    const formattedValue = typeof value === 'boolean' ? value : `'${value}'`;
+    const query = `UPDATE todos SET ${key} = ${formattedValue} WHERE id = ${id}`;
+    
+    try {
+        const result = await executeQuery(query);
+        return result;
+    } catch (error) {
+        console.error("SQL Error:", error);
+        throw error;
+    }
+}
 
 
 export default {
-    executeQuery, getQuery, insertQuery, deleteQuery, updateQuery
+     executeQuery,
+     getQuery, insertQuery, deleteQuery, updateQuery,patchQuery
 }

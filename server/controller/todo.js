@@ -1,12 +1,12 @@
 
-import { deleteTodo, getAllTodos, addTodo, updateTodo } from "../services/todo.js";
+import { deleteTodo, patchTodo, getAllTodos, addTodo, updateTodo } from "../services/todo.js";
 
 export class Todo {
 
     getAll = async (req, res) => {
-      const {user_id } = req.query;
-       
-    console.log(user_id);
+        const { user_id } = req.query;
+
+        console.log(user_id);
         try {
             let todos = await getAllTodos(user_id);
             console.log('Successfully fetched all todos');
@@ -38,13 +38,27 @@ export class Todo {
             res.status(500).send(error.message, "controllerTodo");
         }
     }
-
+    patch = async (req, res) => {
+        const id = req.params.id;
+        console.log("hello");
+        console.log(req.body);
+        try {
+            let resoult = await patchTodo(id, req.body);
+            if (resoult === 0) {
+                console.log(resoult);
+            }
+            res.json(resoult);
+        } catch (error) {
+            console.log("error in patch");
+            res.status(500).json({ error: 'שגיאה בעדכון' });
+        }
+    }
     update = async (req, res) => {
         const id = req.params.id;
         const updatedData = req.body;
 
         try {
-            let result = await updateTodo(updatedData,id );
+            let result = await updateTodo(updatedData, id);
             console.log("Successfully update item:", result);
             res.status(200).json({ message: "Todo updated successfully" });
         } catch (error) {

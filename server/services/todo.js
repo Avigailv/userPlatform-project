@@ -47,7 +47,30 @@ export const addTodo = async (newTodo) => {
   }
 };
 
-
+  // try {
+  //   let result = await query.updateQuery(
+  //     "todos", todo,`id=${id}`
+  //   );
+  //   return result;
+  //   // return result.affectedRows;
+  // } catch (error) {
+  //   console.log("erroratadd");
+  //   //  throw new Error('שגיאה בהוספת נתונים');
+  // }
+export const patchTodo = async (id, body) => {
+    const key = Object.keys(body)[0];
+    const value = body[key];
+  try {
+     let result = await query.patchQuery(
+      id,key,value
+    );
+    return result;
+  }
+  catch(error){
+    console.log("ERROR in patch todo service");
+  }
+   
+};
 
 //T add this function
 export const getTodo=async(typeCondition,condition)=>{
@@ -82,7 +105,8 @@ export const updateTodo = async (todo,id) => {
     let result = await query.updateQuery(
       "todos", todo,`id=${id}`
     );
-    return result.affectedRows;
+    return result;
+    // return result.affectedRows;
   } catch (error) {
     console.log("erroratadd");
     //  throw new Error('שגיאה בהוספת נתונים');

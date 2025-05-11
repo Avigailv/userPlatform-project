@@ -20,6 +20,30 @@ export class Post {
         }
     };
 
+    // add = async (req, res) => {
+    //     try {
+    //         const newPost = req.body;
+
+    //         // הכנסה לטבלת todos
+    //         let postResult = await addPost({
+    //             user_id: newPost.user_id,
+    //             title: newPost.title,
+    //             body: newPost.body
+    //         });
+
+    //         console.log("postResult", postResult)
+
+    //         //  add validate
+
+    //         res.send({ id: postResult });
+    //     } catch (error) {
+    //         console.log('there was an error:', error.message);
+    //         res.status(500).send(error.message, "controllerPost");
+    //     }
+    // }
+
+
+
     add = async (req, res) => {
         try {
             const newPost = req.body;
@@ -34,14 +58,26 @@ export class Post {
             console.log("postResult", postResult)
 
             //  add validate
-
-            res.send({ id: postResult });
+            res.send(postResult);
+            // res.send({ id: postResult });
         } catch (error) {
             console.log('there was an error:', error.message);
             res.status(500).send(error.message, "controllerPost");
         }
     }
 
+    patch = async (req, res) => {
+        const id = req.params.id;
+        const updatedData = req.body;
+
+        try {
+            let result = await updatePost(updatedData, id);
+            console.log("Successfully update item:", result);
+            res.status(200).json({ message: "post updated successfully" });
+        } catch (error) {
+            res.status(500).json({ error: "Failed to update post" });
+        }
+    }
     update = async (req, res) => {
         const id = req.params.id;
         const updatedData = req.body;

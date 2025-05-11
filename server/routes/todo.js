@@ -7,5 +7,5 @@ todoRouter.get("/", todoController.getAll);
 todoRouter.post("/", todoController.add);
 todoRouter.put("/:id", todoController.update);
 todoRouter.delete("/:id", todoController.delete);
-
+todoRouter.patch("/:id",todoController.patch);
 export { todoRouter };

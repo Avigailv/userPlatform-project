@@ -40,7 +40,8 @@ export const addComment = async (newComment) => {
         let result = await query.insertQuery(
             "comments", newComment
         );
-        return result;
+        let comment= await getComment("comments","id",result.insertId) ;
+        return comment;
     } catch (error) {
         console.log("errorInAddComment");
         //  throw new Error('שגיאה בהוספת נתונים');
@@ -67,7 +68,19 @@ export const updateComment = async (comment, id) => {
         //  throw new Error('שגיאה בהוספת נתונים');
     }
 }
-
+export const getComment=async(tableName,typeCondition,condition)=>{
+  console.log(typeCondition,condition);
+   try {
+     let result = await query.getQuery(
+      `${tableName} WHERE ${typeCondition} = "${condition}"`
+    );
+    console.log(result);
+    return result[0];
+  } catch (error) {
+    console.log("errorAtFind");
+    //  throw new Error('שגיאה בהוספת נתונים');
+  }
+};
 
 
 
